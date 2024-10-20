@@ -4,4 +4,4 @@ import kotlinx.serialization.Serializable
 
 
 @Serializable
-data class Card(val name: String, val url: String)
+data class Card(val value: String, val suit: String)

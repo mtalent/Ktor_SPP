@@ -1,5 +1,6 @@
 package com.spp.Talent
 
+import com.spp.Talent.repository.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
@@ -8,6 +9,8 @@ import java.security.KeyStore
 import javax.net.ssl.KeyManagerFactory
 import javax.net.ssl.SSLContext
 import com.spp.Talent.plugins.*
+import com.spp.Talent.routes.gameRoutes
+import io.ktor.server.routing.routing
 
 fun main() {
     // Create the SSL context
@@ -55,6 +58,14 @@ fun loadKeyStore(keystoreFile: File, keystorePassword: String): KeyStore {
 
 // This is your module function where you configure routing and serialization
 fun Application.module() {
+    val repository = Repository()
+    configureDatabase()
     configureSerialization()
     configureRouting()
+
+    routing {
+        gameRoutes(repository)  // Register the game routes
+    }
+
+
 }
