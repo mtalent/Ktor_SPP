@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "com.spp.Talent"
-version = "0.0.1"
+//version = "0.0.1"
 
 application {
     mainClass.set("com.spp.Talent.ApplicationKt")
@@ -29,6 +29,9 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-dao:0.41.1")
     implementation("org.jetbrains.exposed:exposed-jdbc:0.41.1")
     implementation("mysql:mysql-connector-java:8.0.29")
+
+    implementation("io.ktor:ktor-server-netty:$kotlin_version") // Make sure the version is correct
+    implementation("io.ktor:ktor-network-tls:$kotlin_version")
 
     implementation("io.ktor:ktor-server-core-jvm:2.3.12")
     implementation("io.ktor:ktor-server-host-common-jvm:2.3.12")
